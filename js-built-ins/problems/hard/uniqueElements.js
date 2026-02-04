@@ -20,6 +20,7 @@
 
 function getUniqueElements(arr) {
   // Your code here
+  return [...new Set(arr)];
 }
-
+//console.log(getUniqueElements([10, 20, 30, 10, 40, 20]));
 module.exports = getUniqueElements;

@@ -20,6 +20,13 @@
 
 function reverseString(str) {
   // Your code here
+  let s = "";
+  for (let i = str.length; i > -1; i--) {
+    s += str.charAt(i);
+  }
+  return s;
 }
+// const input = "Sumana";
 
+// console.log(reverseString(input));
 module.exports = reverseString;
