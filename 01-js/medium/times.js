@@ -8,5 +8,12 @@ Hint - use Date class exposed in JS
 */
 
 function calculateTime(n) {
-    return 0.01;
+  let start = Date.now();
+  let sum = 0;
+  for (let i = 0; i <= 1000000000; i++) {
+    sum += i;
+  }
+  console.log("Time taken for sum of 100: ", (Date.now() - start) / 100);
 }
+
+calculateTime();

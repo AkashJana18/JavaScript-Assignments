@@ -7,7 +7,19 @@
 */
 
 function isPalindrome(str) {
-    return true;
+  str = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  let l = 0;
+  let r = str.length - 1;
+  console.log(str);
+  while (l <= r) {
+    if (str.charAt(l) !== str.charAt(r)) {
+      return false;
+    }
+    l++;
+    r--;
+  }
+  return true;
 }
+isPalindrome("Mr. Owl ate my metal worm.");
 
 module.exports = isPalindrome;
