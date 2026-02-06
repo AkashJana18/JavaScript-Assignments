@@ -17,6 +17,69 @@
   - `npm run test-calculator`
 */
 
-class Calculator { }
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+
+  add(num) {
+    this._ensureNumber(num);
+    this.result += num;
+  }
+
+  subtract(num) {
+    this._ensureNumber(num);
+    this.result -= num;
+  }
+
+  multiply(num) {
+    this._ensureNumber(num);
+    this.result *= num;
+  }
+
+  divide(num) {
+    this._ensureNumber(num);
+    if (num === 0) {
+      throw new Error("Can't divide by 0");
+    } else {
+      this.result /= num;
+    }
+  }
+
+  clear() {
+    this.result = 0;
+  }
+  getResult() {
+    return this.result;
+  }
+
+  calculate(exp) {
+    if (typeof exp !== "string") {
+      throw new Error("Not a string");
+    }
+    let clean = exp.replace(/\s+/g, "");
+    if (/[^0-9+\*-/().]/.test(clean) && clean.length === 0) {
+      throw new Error("Invalid expression");
+    }
+    let value;
+    try {
+      value = Function(`"use strict"; return (${clean});`)();
+    } catch (e) {
+      throw e;
+    }
+    if (!Number.isFinite(value)) {
+      throw new Error("Can't divide by zero");
+    }
+
+    this.result = value;
+    return this.result;
+  }
+
+  _ensureNumber(num) {
+    if (typeof num !== "number" || Number.isNaN(num)) {
+      throw new Error("Invalid input");
+    }
+  }
+}
 
 module.exports = Calculator;
