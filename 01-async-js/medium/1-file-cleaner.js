@@ -11,3 +11,19 @@
 // ```
 // hello world my name is raman
 // ```
+
+const fs = require("fs");
+
+fs.writeFileSync(
+  "./sample.txt",
+  "hello     world    my    name   is       raman",
+  "utf-8",
+);
+
+// function removeWhitespace(data) {
+//   return data.trim().replace(/\s+/g, " ");
+// }
+
+const data = fs.readFileSync("./sample.txt", "utf-8");
+
+fs.writeFileSync("./sample.txt", data.trim().replace(/\s+/g, " "), "utf-8");
